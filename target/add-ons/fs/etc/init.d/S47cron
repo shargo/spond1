@@ -1,0 +1,38 @@
+#!/bin/sh
+#
+# Cron services.
+#
+# Written by Vladik Goytin.
+
+cron_start()
+{
+	ntpd -qdn -p pool.ntp.org
+	[ `date +"%Y"` -le 2010 ] && `ntpd -qdn -p de.pool.ntp.org`
+	[ `date +"%Y"` -le 2010 ] && `ntpd -qdn -p us.pool.ntp.org`
+	/usr/sbin/crond
+}
+
+
+cron_stop()
+{
+	pkill crond
+}
+
+case "$1" in
+start)
+	cron_start
+	;;
+stop)
+	cron_stop
+	;;
+restart|reload)
+	"$0" stop
+	"$0" start
+	;;
+*)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
+

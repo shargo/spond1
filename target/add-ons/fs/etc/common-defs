@@ -1,0 +1,41 @@
+# Common definitions.
+# Partially shared between host and target.
+
+# Where to store DHCP Option 17 (Root Path) if received from DHCP server.
+ROOTPATH_FILE=/tmp/rootpath
+
+# EEPROM device access
+EEPROM_DEVICE=/sys/bus/i2c/devices/0-0050/eeprom
+
+# NTP server
+NTP_SERVER=pool.ntp.org
+
+# Spondoolies public key.
+SPON_PUBLIC_KEY=/etc/spondoolies-pub.pem
+
+# Hotplug script
+HOTPLUG=/usr/local/bin/hotplug.sh
+
+# 0 (disabled) or 1 (enabled)
+MINING_STATUS=/etc/mining_status
+
+SPOND_RUNNER=/usr/local/bin/spond-runner
+
+###
+### Mount points
+###
+
+# SD Card boot partition mount point.
+MP_SD_BOOT=/mnt/sd-boot
+# SD Card config partition mount point.
+MP_SD_CONF=/mnt/sd-config
+# eMMC boot partition mount point.
+MP_MMC_BOOT=/mnt/mmc-boot
+# eMMC configuration partition mount point.
+MP_MMC_CONF=/mnt/mmc-config
+
+MP_CONF=/mnt/config
+MP_BOOT=/mnt/boot
+
+# NFS mount point.
+MP_NFS=/mnt/nfs

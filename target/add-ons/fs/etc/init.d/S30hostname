@@ -1,0 +1,26 @@
+#!/bin/sh
+#
+# Handle SPI.
+#
+
+export PATH=$PATH:/usr/local/bin:/bin
+case "$1" in
+start)
+	echo "Setting hostname..."
+	/bin/hostname `eeprom-read-hostname.sh`
+	;;
+stop)
+	;;
+restart|reload)
+	"$0" stop
+	"$0" start
+	;;
+*)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
+
+
+

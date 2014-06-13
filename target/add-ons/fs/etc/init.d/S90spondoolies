@@ -1,0 +1,64 @@
+#!/bin/sh
+#
+# Handle SPI.
+#
+
+
+. /etc/common-defs
+
+export PATH=$PATH:/usr/local/bin
+
+DAEMON=miner_starter_simple
+
+case "$1" in
+start)
+	# bullshit
+	NORMALBOOT=1
+	#	mount /mnt/sd-boot
+	#	mount /mnt/mmc-config
+	#	mount /mnt/mmc-boot
+	if [ -e "/mnt/mmc-config/autorun" ]; then
+		NORMALBOOT=0
+		/mnt/mmc-config/autorun
+	fi
+	
+	mount /mnt/sd-boot
+	if [ -e "/mnt/sd-boot/autorun" ]; then
+		NORMALBOOT=0
+		/mnt/sd-boot/autorun
+	fi
+	umount /mnt/sd-boot
+
+	echo "NORMALBOOT=${NORMALBOOT}"
+	if [ ${NORMALBOOT} -eq 1 ]; then 
+		${DAEMON} start
+		/usr/local/bin/ifup-requester &
+		echo $! > /var/run/ifup-requester.pid
+		/usr/local/bin/mining_watchdog start
+	fi
+	;;
+stop)
+	/usr/local/bin/mining_watchdog stop
+	${DAEMON} stop	
+	if [ -f "/var/run/ifup-requester.pid" ]
+	then
+		pid1=`cat /var/run/ifup-requester.pid`
+		rm /var/run/ifup-requester.pid
+		kill -9 $pid1
+	fi
+	sleep 3
+	;;
+restart|reload)
+	$0 stop
+	$0 start
+	;;
+*)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
+
+
+
+

@@ -1,0 +1,53 @@
+#!/bin/sh
+#
+# Handle SPI.
+#
+
+export PATH=$PATH:/usr/local/bin:/bin
+
+
+
+
+load_fpga() {
+	echo 22 > /sys/class/gpio/export
+	echo out > /sys/class/gpio/gpio22/direction
+	echo 1 > /sys/class/gpio/gpio22/value
+
+	cd /spond-data
+	/usr/local/bin/fpga-load.sh squid_top.jam
+	echo 0 > /sys/class/gpio/gpio22/value
+}
+
+
+
+case "$1" in
+start)
+	NORMALBOOT=1
+	if [ -e "/sd/autorun" ]; then
+		NORMALBOOT=0
+	fi
+	if [ -e "/mmc/autorun" ]; then
+		NORMALBOOT=0
+	fi
+
+	if [ ${NORMALBOOT} -eq 1 ]; then 
+		echo "Loading FPGA..."
+		load_fpga
+	fi
+	;;
+stop)
+	;;
+restart|reload)
+	"$0" stop
+	"$0" start
+	;;
+*)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
+
+
+
+
