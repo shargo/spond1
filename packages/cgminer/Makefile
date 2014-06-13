@@ -1,5 +1,5 @@
 BUILDROOT_DIR = ../../buildroot/src
-BUILDROOT_BUILD_DIR = ${BUILDROOT_DIR}/buildroot/output/build/
+BUILDROOT_BUILD_DIR = ${BUILDROOT_DIR}/output/build/
 
 get:
 	git clone https://github.com/ckolivas/cgminer.git src
