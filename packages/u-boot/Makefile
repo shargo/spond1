@@ -9,4 +9,4 @@ init:
 
 
 build:
-	make -C git
+	make -C src
