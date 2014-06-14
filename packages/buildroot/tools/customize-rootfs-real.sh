@@ -2,11 +2,9 @@
 
 # Rootfs customization.
 
-set
-echo `pwd`
 REF_ROOT_DIR=`cat ../root-dir`
 
-. ${REF_ROOT_DIR}/add-ons/fs/etc/common-defs
+. ${REF_ROOT_DIR}/target/add-ons/fs/etc/common-defs
 
 # This is provided by Buildroot
 TARGET_DIR=$1
