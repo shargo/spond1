@@ -1,1 +1,1 @@
-../kernel/kernel/firmware/BB-SPIDEV1-00A0.dtbo
+../../packages/kernel/src/firmware/BB-SPIDEV1-00A0.dtbo
