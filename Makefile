@@ -10,7 +10,7 @@ image: do_deploy
 do_deploy: build deploy
 
 init:
-	for d in kernel $(filter-out kernel, ${PKG_LIST}); do echo make -C ${PACKAGES_SUBDIR}/$$d $@; done
+	for d in kernel $(filter-out kernel, ${PKG_LIST}); do make -C ${PACKAGES_SUBDIR}/$$d $@; done
 
 deploy:
 	echo ${PROJ_ROOT} > packages/buildroot/root-dir

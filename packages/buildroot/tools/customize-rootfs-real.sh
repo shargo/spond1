@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 # Rootfs customization.
 
 REF_ROOT_DIR=`cat ../root-dir`
