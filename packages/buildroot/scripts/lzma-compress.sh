@@ -1,0 +1,1 @@
+build-scripts/lzma-compress.sh

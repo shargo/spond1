@@ -66,25 +66,25 @@ copy_all_spond_files() {
 	cp ${CUR_DIR}/../arm-binaries/*  usr/local/bin
 
 	#binaries
-	cp ${CUR_DIR}/../../scripts/eeprom-read-hostname.sh usr/local/bin
-	cp ${CUR_DIR}/../../scripts/rff usr/local/bin
-	cp ${CUR_DIR}/../../scripts/wtf usr/local/bin
-	cp ${CUR_DIR}/../../scripts/leds usr/local/bin
-	cp ${CUR_DIR}/../../scripts/mainvpd usr/local/bin
-	cp ${CUR_DIR}/../../scripts/mbtest usr/local/bin
-	cp ${CUR_DIR}/../../scripts/getmac.sh usr/local/bin
-	cp ${CUR_DIR}/../../scripts/ac2dcvpd usr/local/bin
-	cp ${CUR_DIR}/../../scripts/readmngvpd.sh usr/local/bin
-	cp ${CUR_DIR}/../../scripts/readboxvpd.sh usr/local/bin
-	cp ${CUR_DIR}/../../scripts/writemngvpd.sh usr/local/bin
-	cp ${CUR_DIR}/../../scripts/writeboxvpd.sh usr/local/bin
-	cp ${CUR_DIR}/../../scripts/setdcrind usr/local/bin
-	#cp ${CUR_DIR}/../../scripts/read-mng-eeprom-stripped.sh usr/local/bin
+	cp ${CUR_DIR}/../scripts/eeprom-read-hostname.sh usr/local/bin
+	cp ${CUR_DIR}/../scripts/rff usr/local/bin
+	cp ${CUR_DIR}/../scripts/wtf usr/local/bin
+	cp ${CUR_DIR}/../scripts/leds usr/local/bin
+	cp ${CUR_DIR}/../scripts/mainvpd usr/local/bin
+	cp ${CUR_DIR}/../scripts/mbtest usr/local/bin
+	cp ${CUR_DIR}/../scripts/getmac.sh usr/local/bin
+	cp ${CUR_DIR}/../scripts/ac2dcvpd usr/local/bin
+	cp ${CUR_DIR}/../scripts/readmngvpd.sh usr/local/bin
+	cp ${CUR_DIR}/../scripts/readboxvpd.sh usr/local/bin
+	cp ${CUR_DIR}/../scripts/writemngvpd.sh usr/local/bin
+	cp ${CUR_DIR}/../scripts/writeboxvpd.sh usr/local/bin
+	cp ${CUR_DIR}/../scripts/setdcrind usr/local/bin
+	#cp ${CUR_DIR}/../scripts/read-mng-eeprom-stripped.sh usr/local/bin
 	cp ${CUR_DIR}/../../spilib/miner_gate/miner_gate_arm etc/bin
 	cp ${CUR_DIR}/../../spilib/miner_gate/mg_version ./
 	mkdir -p etc/bin
 	rm -rf usr/local/bin/cgminer
-	cp ${CUR_DIR}/../../../../cg-miner-git/cgminer/cgminer etc/bin/
+	cp ${CUR_DIR}/../../cg-miner-git/cgminer/cgminer etc/bin/
 	cp ${CUR_DIR}/../../spilib/miner_gate_test_arm usr/local/bin
 	cp ${CUR_DIR}/../../spilib/zabbix_reader/zabbix_reader_arm  usr/local/bin
 	cp ${CUR_DIR}/../../spilib/hammer_reg/reg usr/local/bin
@@ -97,12 +97,12 @@ copy_all_spond_files() {
 
 memtester()
 {
-	cp -a ${CUR_DIR}/../memtester-4.3.0/memtester usr/local/bin
+	cp -a ${CUR_DIR}/../../memtester-4.3.0/memtester usr/local/bin
 }
 
 web_server()
 {
-	cp -a ${CUR_DIR}/../../../../minepeon/http/* var/www/ -rf
+	cp -a ${CUR_DIR}/../../minepeon/http/* var/www/ -rf
 
 	for m in trigger_b4_dl status ssi simple setenv secdownload scgi proxy	\
 		mysql_vhost magnet flv_streaming extforward expire evhost	\
@@ -148,8 +148,8 @@ sw_upgrade()
 
 cron()
 {
-	cp ${CUR_DIR}/../../../../minepeon/etc/cron.d/5min/RECORDHashrate etc/cron.d
-	cp ${CUR_DIR}/../../../../minepeon/etc/cron.d/hourly/pandp_register.sh etc/cron.d
+	cp ${CUR_DIR}/../../minepeon/etc/cron.d/5min/RECORDHashrate etc/cron.d
+	cp ${CUR_DIR}/../../minepeon/etc/cron.d/hourly/pandp_register.sh etc/cron.d
 
 	# Should be deleted as it is symlinked to /tmp/rrd in runtime.
 	rm -rf var/www/rrd
