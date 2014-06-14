@@ -86,7 +86,7 @@ copy_all_spond_files() {
 	cp ${CUR_DIR}/../../spilib/src/miner_gate/mg_version ./
 	rm -rf usr/local/bin/cgminer
 	cp ${CUR_DIR}/../../cgminer/src/cgminer etc/bin/
-	cp ${CUR_DIR}/../../spilib/src/miner_gate_tester/miner_gate_test_arm usr/local/bin
+	cp ${CUR_DIR}/../../spilib/src/miner_gate_test_arm usr/local/bin
 	cp ${CUR_DIR}/../../spilib/zabbix_reader/zabbix_reader_arm  usr/local/bin
 	cp ${CUR_DIR}/../../spilib/hammer_reg/reg usr/local/bin
 	#cp ${CUR_DIR}/../add-ons/mining_controller usr/local/bin
