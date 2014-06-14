@@ -60,6 +60,7 @@ copy_all_spond_files() {
 	cp ${CUR_DIR}/../../minepeon/src/http/* var/www -r
 
 	#FPGA
+	make -C ${CUR_DIR}/../jtag/jam
 	cp ${CUR_DIR}/../jtag/jam/jam usr/local/bin
 	cp ${CUR_DIR}/../jtag/fpga-load.sh usr/local/bin
 	mkdir -p spond-data
