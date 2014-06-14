@@ -6,11 +6,14 @@ get:
 init:
 	make -C src ${OPTS} distclean
 	make -C src ${OPTS} spondoolies_defconfig
+	@rm -rf fs.cpio.lzma
+	touch fs.cpio.lzma
 	make -C src ${OPTS} -j8
 
 build:
-	make -C src ${OPTS} menuconfig
-	make -C src ${OPTS} UIMAGE_NAME="SP10_FW:`cat add-ons/fs/fw_ver | tr ' ' '_'`" uImage -j 8
-	make -C src ${OPTS} spondoolies.dtb
 
 deploy:
+	@rm -rf fs.cpio.lzma
+	cp -frv ../buildroot/src/output/images/rootfs.cpio.lzma fs.cpio.lzma
+	make -C src ${OPTS} UIMAGE_NAME="SP10_FW:`cat ${DEPLOY_DIR}/../add-ons/fs/fw_ver | tr ' ' '_'`" uImage -j 8
+	make -C src ${OPTS} spondoolies.dtb

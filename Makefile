@@ -13,6 +13,7 @@ init:
 	for d in kernel $(filter-out kernel, ${PKG_LIST}); do make -C ${PACKAGES_SUBDIR}/$$d $@; done
 
 deploy:
+	vi  ${DEPLOY_DIR}/../add-ons/fs/fw_ver
 	echo ${PROJ_ROOT} > packages/buildroot/root-dir
 	for d in $(filter-out kernel buildroot, ${PKG_LIST}) buildroot kernel; do make -C ${PACKAGES_SUBDIR}/$$d $@ DEPLOY_DIR=${DEPLOY_DIR}; done
 
