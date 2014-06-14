@@ -2,7 +2,10 @@
 
 # Rootfs customization.
 
-. ../add-ons/fs/etc/common-defs
+echo `pwd`
+REF_ROOD_DIR=`cat ../root-dir`
+
+. ${REF_ROOT_DIR}/add-ons/fs/etc/common-defs
 
 # This is provided by Buildroot
 TARGET_DIR=$1
@@ -53,7 +56,7 @@ spi_stuff()
 
 copy_all_spond_files() {
 	mkdir -p var/www
-	
+
 	cp ${CUR_DIR}/../../../../minepeon/http/* var/www -r
 
 	#FPGA
@@ -61,7 +64,7 @@ copy_all_spond_files() {
 	cp ${CUR_DIR}/../jtag/fpga-load.sh usr/local/bin
 	mkdir -p spond-data
 	cp ${CUR_DIR}/../arm-binaries/*  usr/local/bin
-	
+
 	#binaries
 	cp ${CUR_DIR}/../../scripts/eeprom-read-hostname.sh usr/local/bin
 	cp ${CUR_DIR}/../../scripts/rff usr/local/bin

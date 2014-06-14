@@ -13,6 +13,7 @@ init:
 	for d in kernel $(filter-out kernel, ${PKG_LIST}); do echo make -C ${PACKAGES_SUBDIR}/$$d $@; done
 
 deploy:
+	echo ${PROJ_ROOT} > packages/buildroot/root-dir
 	for d in $(filter-out kernel buildroot, ${PKG_LIST}) buildroot kernel; do echo make -C ${PACKAGES_SUBDIR}/$$d $@ DEPLOY_DIR=${DEPLOY_DIR}; done
 
 $(GEN_TARGETS):
