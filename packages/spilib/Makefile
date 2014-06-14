@@ -4,6 +4,7 @@ get:
 init:
 
 build:
-	make -C src/miner_gate
+	mkdir -p ~/shared
+	cd src && ./make_me
 
 deploy:
