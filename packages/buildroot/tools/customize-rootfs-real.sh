@@ -169,7 +169,7 @@ rrd()
 
 cryptodev()
 {
-	cp -a ${CUR_DIR}/../../cryptodev-linux-1.6/src/cryptodev.ko lib/modules
+	cp -a ${CUR_DIR}/../../cryptodev/src/cryptodev.ko lib/modules
 }
 
 ipstate()
