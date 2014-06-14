@@ -13,7 +13,7 @@ init:
 build:
 deploy:
 	@rm -rf tools/customize-rootfs.sh tools/lzma-compress.sh
-	ln -s ${PWD}/tools/customize-rootfs-real.sh tools/customize-rootfs.sh
-	ln -s ${PWD}/tools/lzma-compress-real.sh tools/lzma-compress.sh
+	ln -s customize-rootfs-real.sh tools/customize-rootfs.sh
+	ln -s lzma-compress-real.sh tools/lzma-compress.sh
 	@rm -rf src/output/images/*
 	make -C src

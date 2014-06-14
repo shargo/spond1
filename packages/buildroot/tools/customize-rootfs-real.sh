@@ -4,7 +4,7 @@
 
 set
 echo `pwd`
-REF_ROOD_DIR=`cat ../root-dir`
+REF_ROOT_DIR=`cat ../root-dir`
 
 . ${REF_ROOT_DIR}/add-ons/fs/etc/common-defs
 
