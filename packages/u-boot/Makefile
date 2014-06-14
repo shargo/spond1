@@ -8,6 +8,6 @@ init:
 	make -C src ${OPTS} am335x_evm_config
 
 build:
-	make -C src
+	make -C src ${OPTS}
 
 deploy:
