@@ -3,8 +3,9 @@
 # Rootfs customization.
 
 REF_ROOT_DIR=`cat ../root-dir`
+ADDONS_PARENT=${REF_ROOT_DIR}/target
 
-. ${REF_ROOT_DIR}/target/add-ons/fs/etc/common-defs
+. ${ADDONS_PARENT}/add-ons/fs/etc/common-defs
 
 # This is provided by Buildroot
 TARGET_DIR=$1
@@ -35,7 +36,7 @@ fix_mdev_conf()
 
 copy_fs()
 {
-	cp -af ${CUR_DIR}/../add-ons/fs/* .
+	cp -af ${ADDONS_PARENT}/add-ons/fs/* .
 }
 
 zabbix_agent()
@@ -48,7 +49,7 @@ zabbix_agent()
 spi_stuff()
 {
 	cd lib/firmware
-	cp ${CUR_DIR}/../add-ons/BB-SPIDEV0-00A0.dtbo .
+	cp ${ADDONS_PARENT}/add-ons/BB-SPIDEV0-00A0.dtbo .
 	ln -s -f BB-SPIDEV0-00A0.dtbo BB-SPI0-00A0.dtbo
 	cd - 2>/dev/null
 }
@@ -56,7 +57,7 @@ spi_stuff()
 copy_all_spond_files() {
 	mkdir -p var/www
 
-	cp ${CUR_DIR}/../../../../minepeon/http/* var/www -r
+	cp ${CUR_DIR}/../../minepeon/http/* var/www -r
 
 	#FPGA
 	cp ${CUR_DIR}/../jtag/jam/jam usr/local/bin
