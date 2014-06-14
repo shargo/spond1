@@ -1,4 +1,4 @@
-BUILDROOT_DIR = ${PWD}/../buildroot/src
+BUILDROOT_DIR = ${CURDIR}/../buildroot/src
 BUILDROOT_BUILD_DIR = ${BUILDROOT_DIR}/output/build
 
 get:

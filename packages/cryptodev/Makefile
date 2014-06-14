@@ -5,6 +5,6 @@ init:
 	cp Makefile.vladik src/Makefile
 
 build:
-	cd src && make -C ../../kernel/src/  ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabi- SUBDIRS=${PWD}/src modules
+	cd src && make -C ../../kernel/src/  ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabi- SUBDIRS=${CURDIR}/src modules
 
 deploy:
