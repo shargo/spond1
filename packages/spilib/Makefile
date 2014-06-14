@@ -4,3 +4,4 @@ get:
 init:
 
 build:
+	make -C src/miner_gate
