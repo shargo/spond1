@@ -98,7 +98,7 @@ copy_all_spond_files() {
 
 memtester()
 {
-	cp -a ${CUR_DIR}/../../memtester-4.3.0/src/memtester usr/local/bin
+	cp -a ${CUR_DIR}/../../memtester/src/memtester usr/local/bin
 }
 
 web_server()
