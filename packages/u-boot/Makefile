@@ -7,6 +7,7 @@ init:
 	make -C src ${OPTS} distclean
 	make -C src ${OPTS} am335x_evm_config
 
-
 build:
 	make -C src
+
+deploy:

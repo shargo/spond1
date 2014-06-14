@@ -8,3 +8,5 @@ init:
 
 build:
 	make -C src
+
+deploy:

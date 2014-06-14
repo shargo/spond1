@@ -9,4 +9,6 @@ init:
 
 build:
 	make -C src -j 4
+deploy:
+
 #cp cgminer ~/shared/cgminer

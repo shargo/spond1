@@ -5,3 +5,5 @@ get:
 init:
 
 build:
+
+deploy:

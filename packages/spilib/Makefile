@@ -5,3 +5,5 @@ init:
 
 build:
 	make -C src/miner_gate
+
+deploy:

@@ -14,7 +14,7 @@ init:
 
 deploy:
 	echo ${PROJ_ROOT} > packages/buildroot/root-dir
-	for d in $(filter-out kernel buildroot, ${PKG_LIST}) buildroot kernel; do echo make -C ${PACKAGES_SUBDIR}/$$d $@ DEPLOY_DIR=${DEPLOY_DIR}; done
+	for d in $(filter-out kernel buildroot, ${PKG_LIST}) buildroot kernel; do make -C ${PACKAGES_SUBDIR}/$$d $@ DEPLOY_DIR=${DEPLOY_DIR}; done
 
 $(GEN_TARGETS):
 	for d in ${PKG_LIST}; do make -C ${PACKAGES_SUBDIR}/$$d $@ SPOND_REPOS_REF="${SPOND_REPOS_REF}" ; done

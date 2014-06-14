@@ -6,3 +6,5 @@ init:
 
 build:
 	cd src && make -C ../../kernel/src/  ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabi- SUBDIRS=${PWD}/src modules
+
+deploy:

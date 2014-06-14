@@ -12,3 +12,5 @@ build:
 	make -C src ${OPTS} menuconfig
 	make -C src ${OPTS} UIMAGE_NAME="SP10_FW:`cat add-ons/fs/fw_ver | tr ' ' '_'`" uImage -j 8
 	make -C src ${OPTS} spondoolies.dtb
+
+deploy:
