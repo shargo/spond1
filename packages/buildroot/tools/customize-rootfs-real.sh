@@ -2,6 +2,7 @@
 
 # Rootfs customization.
 
+set
 echo `pwd`
 REF_ROOD_DIR=`cat ../root-dir`
 
