@@ -5,7 +5,7 @@ get:
 
 init:
 	cp Makefile.vladik src/Makefile
-
+	rm -rf src/trycpp.c
 build:
 	make -C src
 
