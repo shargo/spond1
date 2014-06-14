@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+
 # Rootfs customization.
 
 REF_ROOT_DIR=`cat ../root-dir`
@@ -81,9 +81,9 @@ copy_all_spond_files() {
 	cp ${CUR_DIR}/../scripts/writeboxvpd.sh usr/local/bin
 	cp ${CUR_DIR}/../scripts/setdcrind usr/local/bin
 	#cp ${CUR_DIR}/../scripts/read-mng-eeprom-stripped.sh usr/local/bin
+	mkdir -p etc/bin
 	cp ${CUR_DIR}/../../spilib/src/miner_gate/miner_gate_arm etc/bin
 	cp ${CUR_DIR}/../../spilib/src/miner_gate/mg_version ./
-	mkdir -p etc/bin
 	rm -rf usr/local/bin/cgminer
 	cp ${CUR_DIR}/../../cgminer/src/cgminer etc/bin/
 	cp ${CUR_DIR}/../../spilib/src/miner_gate_tester/miner_gate_test_arm usr/local/bin
