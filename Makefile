@@ -1,5 +1,5 @@
 PROJ_ROOT=${PWD}
-DEPLOY_DIR=${PROJ_ROOT}/target/deploy
+DEPLOY_DIR=${PROJ_ROOT}/target/add-ons
 SPOND_REPOS_REF=https://github.com/Spondoolies-Tech
 PACKAGES_SUBDIR=packages
 GEN_TARGETS=get build
