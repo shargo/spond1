@@ -1,5 +1,5 @@
 get:
-	git clone ${SPOND_REPOS_REF}/miner_gate.git src
+	git clone https://github.com/zvisha/miner_gate_sp30.git src
 
 init:
 
