@@ -5,6 +5,7 @@ get:
 	git clone ${SPOND_REPOS_REF}/kernel.git src
 init:
 	make -C src ${OPTS} distclean
+	cp kernel-config src/arch/arm/configs/spondoolies_defconfig
 	make -C src ${OPTS} spondoolies_defconfig
 	@rm -rf fs.cpio.lzma
 	touch fs.cpio.lzma
