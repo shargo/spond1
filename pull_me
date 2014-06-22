@@ -1,0 +1,4 @@
+make get #- downoads dependencies
+make init #- applying patches, build minimalistic kernel and buildroot
+make build #- builds everything
+make deploy #- assembles the rootfs and builds the full kernel
