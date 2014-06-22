@@ -1,0 +1,16 @@
+#!/bin/bash
+WD=`pwd`
+git pull
+cd $WD/kernel/src/
+git pull
+cd $WD/cgminer/src/
+git pull
+cd $WD/minepeon/src/
+git pull
+cd $WD/u-boot/src/
+git pull
+cd $WD/spilib_sp30/
+git pull
+cd $WD/cryptodev/src/
+git pull
+
