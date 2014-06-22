@@ -1,0 +1,38 @@
+#!/bin/bash
+
+die () {
+    echo >&2 "$@"
+    exit 1
+}
+
+[ "$#" -eq 2 ] || die "$0 <tag> <descr>"
+
+COMMENT=$1
+TAG=$2
+WD=`pwd`
+
+git commit -a -m "$COMMENT"
+git tag -a "$TAG" -m "$COMMENT"
+git push
+
+cd $WD/kernel/src/
+git commit -a -m "$COMMENT"
+git tag -a "$TAG" -m "$COMMENT"
+git push
+
+cd $WD/minepeon/src/
+git commit -a -m "$COMMENT"
+git tag -a "$TAG" -m "$COMMENT"
+#git push
+
+cd $WD/u-boot/src/
+git commit -a -m "$COMMENT"
+git tag -a "$TAG" -m "$COMMENT"
+git push
+
+cd $WD/spilib_sp30/
+git commit -a -m "$COMMENT"
+git tag -a "$TAG" -m "$COMMENT"
+git push
+
+
