@@ -16,7 +16,7 @@ build:
 deploy:
 	@rm -rf fs.cpio.lzma
 	cp -frv ../buildroot/src/output/images/rootfs.cpio.lzma fs.cpio.lzma
-	make -C src ${OPTS} UIMAGE_NAME="SP10_FW:`cat ${DEPLOY_DIR}/../add-ons/fs/fw_ver | tr ' ' '_'`" uImage -j 8
+	make -C src ${OPTS} UIMAGE_NAME="SP30_FW:`cat ${DEPLOY_DIR}/../add-ons/fs/fw_ver | tr ' ' '_'`" uImage -j 8
 	make -C src ${OPTS} spondoolies.dtb
 	cp src/arch/arm/boot/uImage ./
 	cp src/arch/arm/boot/dts/spondoolies.dtb ./

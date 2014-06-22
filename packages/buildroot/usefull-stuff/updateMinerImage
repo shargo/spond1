@@ -15,7 +15,7 @@ if [ ! -e $IMAGE ] ;
 fi
 echo file $IMAGE exist
 
-mkimage -l $IMAGE | grep SP10_FW  > /dev/null 2>&1
+mkimage -l $IMAGE | grep SP30_FW  > /dev/null 2>&1
 if [ ! $? -eq 0 ] ; 
 	then mkimage -l $IMAGE | grep Linux-3.8.13  > /dev/null 2>&1
 	if [ ! $? -eq 0 ] ; 
