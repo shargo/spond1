@@ -23,7 +23,7 @@ misc_start()
 {
 	rrd_dirs
 #	/usr/local/bin/setdcrind -both > /tmp/setdcrind
-	echo "TOP:0 BOTTOM:0" > /tmp/fet
+#	echo "TOP:0 BOTTOM:0" > /etc/fet NOT YET!!
 }
 
 fans_off()
