@@ -23,7 +23,7 @@ git push
 cd $WD/minepeon/src/
 git commit -a -m "$COMMENT"
 git tag -a "$TAG" -m "$COMMENT"
-#git push
+git push
 
 cd $WD/u-boot/src/
 git commit -a -m "$COMMENT"
