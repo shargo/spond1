@@ -6,9 +6,13 @@
 
 cron_start()
 {
-	ntpd -qdn -p pool.ntp.org
-	[ `date +"%Y"` -le 2010 ] && `ntpd -qdn -p de.pool.ntp.org`
-	[ `date +"%Y"` -le 2010 ] && `ntpd -qdn -p us.pool.ntp.org`
+
+	if [ ${NORMALBOOT} -eq 1 ]; then 
+		ntpd -qdn -p pool.ntp.org
+		[ `date +"%Y"` -le 2010 ] && `ntpd -qdn -p de.pool.ntp.org`
+		[ `date +"%Y"` -le 2010 ] && `ntpd -qdn -p us.pool.ntp.org`
+	fi
+
 	/usr/sbin/crond
 }
 
@@ -17,6 +21,24 @@ cron_stop()
 {
 	pkill crond
 }
+
+
+set_normal_boot()
+{
+	NORMALBOOT=1
+
+	if [ -e "/mnt/mmc-config/autorun" ]; then
+		NORMALBOOT=0
+	fi
+
+	mount /mnt/sd-boot 2>/dev/null
+	if [ -e "/mnt/sd-boot/autorun" ]; then
+		NORMALBOOT=0
+	fi
+	umount /mnt/sd-boot 2>/dev/null
+}
+
+set_normal_boot
 
 case "$1" in
 start)
