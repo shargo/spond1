@@ -16,7 +16,7 @@ all:				shar
 
 
 shar:	../target/add-ons/fs/fw_ver ../packages/u-boot/src/u-boot.img
-	cd ../ ; make deploy
+	cd ../ ; make build; make deploy
 	cp ../uImage data/
 	cp ../spondoolies.dtb data/
 	cp ../target/add-ons/fs/fw_ver data/
