@@ -12,6 +12,12 @@ export PATH=$PATH:/usr/local/bin:/bin
 
 
 miner_gate_arm_watchdog () {
+	if [ -f "/tmp/miner_gate_arm" ]
+	then 
+		rm -f /usr/local/bin/miner_gate_arm
+		mv /tmp/miner_gate_arm /usr/local/bin/
+	fi
+
 	$MINERGATE_CMD &
 	echo $! > /var/run/miner_gate_arm.pid
 	sleep 7
@@ -19,6 +25,17 @@ miner_gate_arm_watchdog () {
 	echo $! > /var/run/cgminer_arm.pid
 
 	while true; do
+		if [ -f "/tmp/miner_gate_arm" ]
+		then 
+			kill `pidof miner_gate_arm`
+			sleep 20
+			rm -f /usr/local/bin/miner_gate_arm
+			mv /tmp/miner_gate_arm /usr/local/bin/
+			echo "Minergate updated and restarted"
+			$MINERGATE_CMD &
+			echo $! > /var/run/miner_gate_arm.pid
+		fi
+
 		pidm=`cat /var/run/miner_gate_arm.pid`
 		if [ ! -e /proc/$pidm -a /proc/$pidm/exe ]; then
 			echo "Minergate died and restarted"
