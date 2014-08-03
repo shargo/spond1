@@ -36,6 +36,8 @@ test_fan()  {
 	return ${RC}
 }
 
+fans.sh ON
+sleep 1
 GPIO=68 ; FAN=1 ; test_fan ; err=$?
 
 GPIO=67 ; FAN=2 ; test_fan ; err=$(($? + $err))
@@ -44,9 +46,11 @@ GPIO=66 ; FAN=3 ; test_fan ; err=$(($? + $err))
 
 GPIO=69 ; FAN=4 ; test_fan ; err=$(($? + $err))
 
-GPIO=60 ; FAN=5 ; test_fan ; err=$(($? + $err))
+# GPIO=60 ; FAN=5 ; test_fan ; err=$(($? + $err))
 
-GPIO=30 ; FAN=6 ; test_fan ; err=$(($? + $err))
+# GPIO=30 ; FAN=6 ; test_fan ; err=$(($? + $err))
+
+fans.sh OFF
 
 err=$((${err}>>1))
 echo ERROR is ${err}
