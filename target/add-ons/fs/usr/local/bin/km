@@ -1,0 +1,3 @@
+#!/bin/sh
+echo kill \`pidof miner_gate_arm\`
+kill `pidof miner_gate_arm`
