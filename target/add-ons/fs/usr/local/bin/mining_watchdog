@@ -37,7 +37,7 @@ reboot_miner_safe() {
 
 loop() {
 while true; do
-	sleep 260
+	sleep 120
 	# test free memory
 	FREE_MEM=`awk '/MemFree/ {printf( "%.2d\n", $2 / 1024 )}' /proc/meminfo`
 	[ $FREE_MEM -lt 100 ] && reboot_miner_safe 
