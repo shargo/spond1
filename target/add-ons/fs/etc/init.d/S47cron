@@ -7,11 +7,11 @@ cron_start()
 {
 
 	if [ ${NORMALBOOT} -eq 1 ]; then 
-		ntpd -qdn -p pool.ntp.org &
-		ntpd -qdn -p de.pool.ntp.org &
-		ntpd -qdn -p at.pool.ntp.org &
-		ntpd -qdn -p europe.pool.ntp.org &
-		ntpd -qdn -p pool.ntp.org 
+		[ `date +"%Y"` -le 2010 ] && `ntpd -qdn -p pool.ntp.org`
+		[ `date +"%Y"` -le 2010 ] && `ntpd -qdn -p de.pool.ntp.org`
+		[ `date +"%Y"` -le 2010 ] && `ntpd -qdn -p at.pool.ntp.org`
+		[ `date +"%Y"` -le 2010 ] && `ntpd -qdn -p europe.pool.ntp.org`
+		[ `date +"%Y"` -le 2010 ] && `ntpd -qdn -p pool.ntp.org` 
 		[ `date +"%Y"` -le 2010 ] && `ntpd -qdn -p de.pool.ntp.org`
 		[ `date +"%Y"` -le 2010 ] && `ntpd -qdn -p us.pool.ntp.org`
 		[ `date +"%Y"` -le 2010 ] && `ntpd -qdn -p  at.pool.ntp.org `

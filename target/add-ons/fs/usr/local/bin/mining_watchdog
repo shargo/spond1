@@ -6,6 +6,8 @@ SYSLOG_FILE="/mnt/config/log/messages"
 MAX_NVM_LOG_SIZE=5000
 
 reboot_miner_safe() {
+	kill `pidof watchdog`
+	watchdog -T 15 -t 30 /dev/watchdog0
 	NVM_LOG_SIZE=$(du -a "$NVM_LOG" | cut -f 1)
 	if [ $NVM_LOG_SIZE -ge $MAX_NVM_LOG_SIZE ]; then
 		echo "removing huge log file"
