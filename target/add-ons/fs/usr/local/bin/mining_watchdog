@@ -6,6 +6,7 @@ SYSLOG_FILE="/mnt/config/log/messages"
 MAX_NVM_LOG_SIZE=5000
 
 reboot_miner_safe() {
+	logger reboot_miner_safe
 	kill `pidof watchdog`
 	watchdog -T 15 -t 30 /dev/watchdog0
 	NVM_LOG_SIZE=$(du -a "$NVM_LOG" | cut -f 1)
@@ -42,7 +43,11 @@ while true; do
 	sleep 120
 	# test free memory
 	FREE_MEM=`awk '/MemFree/ {printf( "%.2d\n", $2 / 1024 )}' /proc/meminfo`
-	[ $FREE_MEM -lt 100 ] && reboot_miner_safe 
+	if [ $FREE_MEM -lt 100 ]
+	then
+		logger "Too little memory"
+		reboot_miner_safe 
+	fi
 	
 	# test mining
 	if [ -f $WATCHDOG_FILE ] 
@@ -51,6 +56,7 @@ while true; do
 	else
 		mining_watchdog=`cat /etc/mining_watchdog`
 		mining_status=`cat /etc/mining_status`
+		[ $mining_watchdog -gt 0 ] && [ $mining_status -gt 0 ] && logger "Watchdog caught problem, restart"
 		[ $mining_watchdog -gt 0 ] && [ $mining_status -gt 0 ] && reboot_miner_safe 
 	fi
 	done

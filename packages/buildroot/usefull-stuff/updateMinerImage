@@ -64,6 +64,8 @@ fi
 
 
 #> /dev/null 2>&1
+echo "remove custom binaries"
+sshpass -p ${SSH_PASS} ssh -o StrictHostKeyChecking=no root@${MINER} rm /mnt/config/etc/bin/* > /dev/null 2>&1
 echo "mount /mnt/mmc-boot"
 sshpass -p ${SSH_PASS} ssh -o StrictHostKeyChecking=no root@${MINER} mount /mnt/mmc-boot > /dev/null 2>&1
 sshpass -p ${SSH_PASS} ssh -o StrictHostKeyChecking=no root@${MINER} ls /mnt/mmc-boot/MLO > /dev/null 2>&1
