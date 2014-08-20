@@ -57,7 +57,22 @@ while true; do
 		mining_watchdog=`cat /etc/mining_watchdog`
 		mining_status=`cat /etc/mining_status`
 		[ $mining_watchdog -gt 0 ] && [ $mining_status -gt 0 ] && logger "Watchdog caught problem, restart"
-		[ $mining_watchdog -gt 0 ] && [ $mining_status -gt 0 ] && reboot_miner_safe 
+		if [ $mining_status -gt 0 ] 
+		then
+			logger "Watchdog caught problem - what to do?"
+			if [ $mining_watchdog -gt 0 ] 
+			then
+				logger "Watchdog caught problem: soft handle"
+				echo "Watchdog caught problem: soft handle" >> /tmp/mg_event_log
+				kill `pidof miner_gate_arm`
+				sleep 70
+				if [ ! -f $WATCHDOG_FILE ] 
+				then 
+					logger "Watchdog caught BIG problem: hard handle"
+					reboot_miner_safe 
+				fi
+			fi
+		fi
 	fi
 	done
 }
