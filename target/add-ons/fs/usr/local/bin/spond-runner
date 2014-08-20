@@ -29,6 +29,7 @@ miner_gate_arm_watchdog () {
 		if [ ! -e /proc/$pidm -a /proc/$pidm/exe ]; then
 			logger -s "Minergate died and restarted"
 			echo "Minergate died and restarted" >> /tmp/mg_event_log
+			/usr/local/bin/prepare-fet.sh
 			$MINERGATE_CMD &
 			echo $! > /var/run/miner_gate_arm.pid
 		fi
