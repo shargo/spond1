@@ -78,7 +78,7 @@ unmount_media()
 
 case "$1" in
 start)
-	echo 2 > /tmp/blink_led
+	echo 3 > /tmp/blink_led
 	mount_media
 	;;
 stop)

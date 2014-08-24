@@ -26,7 +26,7 @@ case "$1" in
   start)
 	echo -n "Starting logging and wd and blink thread:"
 	blink_thread &
-	echo 1 > /tmp/blink_led
+	echo 20 > /tmp/blink_led
 	pkill watchdog
 	watchdog -T 60 -t 80 /dev/watchdog0
 	start-stop-daemon -S -q -p /var/run/syslogd.pid --exec /sbin/syslogd -- -m 0

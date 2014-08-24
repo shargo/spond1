@@ -23,7 +23,7 @@ stop_watchdog()
 case "$1" in
 start)
 	echo "Configure watchdog ..."
-	rm /tmp/blink_led
+	echo 2 > /tmp/blink_led
 	start_watchdog
 	;;
 stop)
