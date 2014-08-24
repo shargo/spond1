@@ -17,10 +17,14 @@ ssl_cert()
 case "$1" in
 start|"")
 	#ntpd -qn -p pool.ntp.org # set system time, no daemon
+	logger "S98"
+	sync
 	ssl_cert 
 	/etc/cron.d/pandp_register.sh &
 	/etc/cron.d/RECORDHashrate    &
-	ln -s /mnt/config/log/messages /var/log/mesages
+	ln -s /mnt/config/log/messages /var/log/messages2
+	logger "S98 done"
+	sync
 	;;
 
 *)

@@ -8,12 +8,15 @@ UPDATE_INTERVAL=2
 
 start_watchdog()
 {
+	pkill watchdog
 	watchdog -T ${RESET_AFTER} -t ${UPDATE_INTERVAL} /dev/watchdog0
 }
 
 stop_watchdog()
 {
+	#start 2 minute watchdog to monitor reset
 	pkill watchdog
+	watchdog -T 120 -t 140 /dev/watchdog0
 }
 
 

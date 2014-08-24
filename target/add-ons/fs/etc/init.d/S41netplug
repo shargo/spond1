@@ -17,7 +17,11 @@ netplug_stop()
 
 case "$1" in
 start)
+	logger "S41"
+	sync
 	netplug_start
+	logger "S41 done"
+	sync
 	;;
 stop)
 	netplug_stop
