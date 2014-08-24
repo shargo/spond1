@@ -18,6 +18,7 @@ case "$1" in
 start|"")
 	#ntpd -qn -p pool.ntp.org # set system time, no daemon
 	logger "S98"
+	echo 15 > /tmp/blink_led
 	sync
 	ssl_cert 
 	/etc/cron.d/pandp_register.sh &

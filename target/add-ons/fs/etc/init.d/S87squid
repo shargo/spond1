@@ -23,6 +23,7 @@ load_fpga() {
 case "$1" in
 start)
 	logger "S87"
+	echo 13 > /tmp/blink_led
 	sync
 	echo "Loading FPGA..."
 	load_fpga

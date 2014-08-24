@@ -6,6 +6,7 @@
 case "$1" in
   start)
 	// Stop old deamon
+	echo 4 > /tmp/blink_led
 	logger "S18 start"
 	sync
 	start-stop-daemon -K -q -p /var/run/syslogd.pid
