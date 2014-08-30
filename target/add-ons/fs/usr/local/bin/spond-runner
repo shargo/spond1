@@ -4,7 +4,8 @@
 # Written by Spondoolies
 
 
-MINERGATE_CMD="nohup chrt -f 90 /usr/local/bin/miner_gate_arm > /dev/null 2>&1"
+#MINERGATE_CMD="nohup chrt -f 90 /usr/local/bin/miner_gate_arm > /dev/null 2>&1"
+MINERGATE_CMD="nohup /usr/local/bin/miner_gate_arm > /dev/null 2>&1"
 CGMINER_CMD="nohup /etc/bin/cgminer --text-only --config /etc/cgminer.conf"
 export PATH=$PATH:/usr/local/bin:/bin
 
@@ -100,9 +101,11 @@ stop_mg() {
 
 case "$1" in
 start)
+	rm /tmp/blink_led
 	start_mg
 	;;
 stop)
+	echo 2 > /tmp/blink_led
 	stop_mg
 	;;
 restart|reload)

@@ -16,14 +16,13 @@ stop_watchdog()
 {
 	#start 2 minute watchdog to monitor reset
 	pkill watchdog
-	watchdog -T 120 -t 140 /dev/watchdog0
+	watchdog -T 30 -t 140 /dev/watchdog0
 }
 
 
 case "$1" in
 start)
 	echo "Configure watchdog ..."
-	echo 2 > /tmp/blink_led
 	start_watchdog
 	;;
 stop)

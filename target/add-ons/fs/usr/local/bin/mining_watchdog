@@ -40,8 +40,16 @@ reboot_miner_safe() {
 
 
 loop() {
+sleep 180
+
+	if [ -f "/etc/mg_test_reboot" ] 
+	then
+		logger "testing reboot"
+		reboot
+	fi
+
 while true; do
-	sleep 120
+	sleep 150
 	# test free memory
 	FREE_MEM=`awk '/MemFree/ {printf( "%.2d\n", $2 / 1024 )}' /proc/meminfo`
 	logger "free-memory:$FREE_MEM"
@@ -67,12 +75,12 @@ while true; do
 				logger "Watchdog caught problem: soft handle"
 				echo "Watchdog caught problem: soft handle" >> /tmp/mg_event_log
 				pkill miner_gate_arm
-				sleep 80
-				if [ ! -f $WATCHDOG_FILE ] 
-				then 
-					logger "Watchdog caught BIG problem: hard handle"
-					reboot_miner_safe 
-				fi
+				#sleep 120
+				#if [ ! -f $WATCHDOG_FILE ] 
+				#then 
+					#logger "Watchdog caught BIG problem: hard handle not"
+					# reboot_miner_safe not till boot issue resolved
+				#fi
 			else
 				logger "Do nothing WD disabled"
 			fi

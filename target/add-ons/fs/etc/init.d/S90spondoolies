@@ -13,7 +13,7 @@ DAEMON=miner_starter_simple
 case "$1" in
 start)
 	logger "S90"
-	echo 14 > /tmp/blink_led
+	echo 2 > /tmp/blink_led
 	sync
 	NORMALBOOT=1
 	#	mount /mnt/sd-boot
